@@ -3,7 +3,7 @@ ulimit -n 1048576
 echo 3 >/proc/sys/vm/drop_caches
 
 #iostat启动
-iostat -x 5 | tee ${4}/iostat-write-Dataset_${2}G_Value_${3}_DisWal_${5}.txt &
+iostat -x 5 | tee ${4}/iostat-write-Dataset_${2}G_Value_${3}_DisWal_${5}_sync_true.txt &
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 declare -i data=${2}\*1024\*1024\*1024\/${3}
