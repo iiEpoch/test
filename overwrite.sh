@@ -23,7 +23,7 @@ numactl -C 0-31 ./db_bench --benchmarks="overwrite,stats,levelstats" \
 --target_file_size_base=67108864 \
 --sync=false \
 --report_interval_seconds=5 \
---report_file=${4}/Dataset_${2}G_Value_${3}_DisWal_${5}.csv \
-| tee ${4}/Dataset_${2}G_Value_${3}_DisWal_${5}.txt \
+--report_file=${4}/write_Dataset_${2}G_Value_${3}_DisWal_${5}.csv \
+| tee ${4}/write_Dataset_${2}G_Value_${3}_DisWal_${5}.txt \
 
 ps -ef | grep iostat | grep -v grep | awk '{print $2}' | xargs kill -9
