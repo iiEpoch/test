@@ -7,7 +7,7 @@ mkdir ${report_path}
 
 
 #duration(s)
-duration=60
+duration=900
 
 
 for value in {256,512,1024,4096}
