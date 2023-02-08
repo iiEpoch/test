@@ -5,10 +5,6 @@ read -p "report_path:" report_path
 
 mkdir ${report_path}
 
-# read_cache_size_ratio(0 or 25 or 50)
-read_cache_size_ratio=25
-read_cache_size=${dataset}\*${read_cache_size_ratio}
-echo read_cache_size_ratio=${read_cache_size_ratio}
 
 #duration(s)
 duration=60
@@ -37,7 +33,7 @@ do
 		
 		for read_cache_size_ratio in {0,25,50}
 		do
-			read_cache_size=${dataset}\*${read_cache_size_ratio}
+			read_cache_size=$((${dataset}*${read_cache_size_ratio}))
 			echo read_cache_size_ratio=${read_cache_size_ratio}
 			echo "创建测试目录${test_path}"
 			mkdir ${test_path}
