@@ -7,7 +7,7 @@ mkdir ${report_path}
 
 
 # WAL state(true or false)
-disable_wal="fasle"
+disable_wal="false"
 
 for value in {256,512,1024,4096}
 do	
