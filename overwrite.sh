@@ -1,6 +1,10 @@
 #!/bin/bash
 ulimit -n 1048576
 echo 3 >/proc/sys/vm/drop_caches
+
+#iostat启动
+iostat -x 5 | tee ${4}/iostat-write-Dataset_${2}G_Value_${3}_DisWal_${5}.txt &
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 declare -i data=${2}\*1024\*1024\*1024\/${3}
 numactl -C 0-31 ./db_bench --benchmarks="overwrite,stats,levelstats" \
@@ -22,4 +26,4 @@ numactl -C 0-31 ./db_bench --benchmarks="overwrite,stats,levelstats" \
 --report_file=${4}/Dataset_${2}G_Value_${3}_DisWal_${5}.csv \
 | tee ${4}/Dataset_${2}G_Value_${3}_DisWal_${5}.txt \
 
-
+ps -ef | grep iostat | grep -v grep | awk '{print $2}' | xargs kill -9
