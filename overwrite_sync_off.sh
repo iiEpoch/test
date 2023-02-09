@@ -11,7 +11,7 @@ numactl -C 0-31 ./db_bench --benchmarks="overwrite,stats,levelstats" \
 --db=${1} \
 --value_size=${3} --key_size=16 --enable_pipelined_write=true \
 --disable_wal=${5} \
---writes=3000000 \
+--writes=300000 \
 --threads=96 \
 --enable_write_thread_adaptive_yield=false \
 --disable_auto_compactions=false \
