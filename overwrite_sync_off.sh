@@ -13,6 +13,7 @@ numactl -C 0-31 ./db_bench --benchmarks="overwrite,stats,levelstats" \
 --disable_wal=${5} \
 --writes=300000 \
 --threads=96 \
+--duration=600 \
 --enable_write_thread_adaptive_yield=false \
 --disable_auto_compactions=false \
 --compression_type=snappy \
