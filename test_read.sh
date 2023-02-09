@@ -7,25 +7,25 @@ mkdir ${report_path}
 
 
 #duration(s)
-duration=900
+duration=720
 
 
 for value in {256,512,1024,4096}
 do	
 	if [ ${value} -eq 256 ];
 	then 
-	data_path=""
-	
+	data_path="/mnt/nvme3"
+	 
 	elif [ ${value} -eq 512 ];
 	then
-     data_path=""
+     	data_path="/mnt/nvme4"
 
 	elif [ ${value} -eq 1024 ];
 	then
-     data_path=""	
+     	data_path="/mnt/nvme0"	
 
 	else
-	data_path=""
+	data_path="/mnt/nvme5"
 	fi
 
 	for dataset in {200,400,600}
