@@ -13,18 +13,18 @@ for value in {256,512,1024,4096}
 do	
 	if [ ${value} -eq 256 ];
 	then 
-	data_path=""
+	data_path="/mnt/nvme3"
 	 
 	elif [ ${value} -eq 512 ];
 	then
-     data_path=""
+     	data_path="/mnt/nvme4"
 
 	elif [ ${value} -eq 1024 ];
 	then
-     data_path=""	
+     	data_path="/mnt/nvme0"	
 
 	else
-	data_path=""
+	data_path="/mnt/nvme5"
 	fi
 
 	for dataset in {200,400,600}
@@ -52,8 +52,22 @@ do
 	done
 done
 
-#改
-cp -r /mnt/rocksdb/rocksdb/256/256B/200G/* ${test_path}
+cp -r /mnt/nvme3/256B/200G/* ${test_path}
 echo "测试wal关闭"
 ./overwrite.sh ${test_path} 200 256 ${report_path} "true"
+rm -rf ${test_path}
+
+cp -r /mnt/nvme0/1024B/200G/* ${test_path}
+echo "测试wal关闭"
+./overwrite.sh ${test_path} 200 1024 ${report_path} "true"
+rm -rf ${test_path}
+
+cp -r /mnt/nvme3/256B/200G/* ${test_path}
+echo "测试wal关闭"
+./overwrite_sync_off.sh ${test_path} 200 256 ${report_path} "false"
+rm -rf ${test_path}
+
+cp -r /mnt/nvme0/1024B/200G/* ${test_path}
+echo "测试wal关闭"
+./overwrite_sync_off.sh ${test_path} 200 1024 ${report_path} "false"
 rm -rf ${test_path}
