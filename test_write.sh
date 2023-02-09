@@ -63,11 +63,11 @@ echo "测试wal关闭"
 rm -rf ${test_path}
 
 cp -r /mnt/nvme3/256B/200G/* ${test_path}
-echo "测试wal关闭"
+echo "sync"
 ./overwrite_sync_off.sh ${test_path} 200 256 ${report_path} "false"
 rm -rf ${test_path}
 
 cp -r /mnt/nvme0/1024B/200G/* ${test_path}
-echo "测试wal关闭"
+echo "sync"
 ./overwrite_sync_off.sh ${test_path} 200 1024 ${report_path} "false"
 rm -rf ${test_path}
