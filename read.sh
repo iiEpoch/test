@@ -15,7 +15,6 @@ numactl -C 0-31 ./db_bench --benchmarks="readrandom,stats,levelstats" \
 --value_size=${3} --key_size=16 --enable_pipelined_write=true \
 --read_cache_size=${cache} \
 --use_existing_db=1 \
---use_existing_keys=1 \
 --enable_write_thread_adaptive_yield=false \
 --disable_auto_compactions=false \
 --compression_type=snappy \
